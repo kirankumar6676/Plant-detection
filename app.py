@@ -13,7 +13,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-model = load_model('Disease_Detection.h5')  # Load your Keras model
+model = load_model('static/model/Disease_Detection.h5')  # Load your Keras model
 
 # Define the classes
 classes = [
