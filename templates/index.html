@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+</head>
+<body>
+    <h1>Upload an Image for Classification</h1>
+    <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <input type="submit" value="Upload and Predict">
+    </form>
+    <div id="result">
+        <p id="predictionResult"></p>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = new FormData(this);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('predictionResult').innerText = 'Prediction: ' + data;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
