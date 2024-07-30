@@ -1,5 +1,6 @@
 ﻿Flask==3.0.3
 numpy==1.26.4
 keras==3.4.1
+opencv-python==4.10.0
 
 
